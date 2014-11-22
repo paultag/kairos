@@ -19,6 +19,7 @@ type Future struct {
 
 /* Get a Future by ID */
 func GetFuture(id string) Future {
+	/* Fill this out with doing a sqlite call... */
 	return Future{
 		Id:        id,
 		Scheduled: time.Now().Add((time.Second * 1)),
@@ -31,6 +32,7 @@ func GetFuture(id string) Future {
 
 /* */
 func SaveFuture(f Future) {
+	/* Fill this out with doing a sqlite call... */
 }
 
 /* Run a Future */
@@ -45,7 +47,7 @@ func RunFuture(f Future) {
 
 	err := f.Command.Run()
 	f.Done = true
-	f.Error = err == nil
+	f.Error = (err == nil)
 	SaveFuture(f)
 
 	if err != nil {

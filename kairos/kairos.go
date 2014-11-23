@@ -30,7 +30,7 @@ func GetFuture(id string) Future {
 	}
 }
 
-/* */
+/* Save a Future */
 func SaveFuture(f Future) {
 	/* Fill this out with doing a sqlite call... */
 }

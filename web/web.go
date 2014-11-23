@@ -15,4 +15,5 @@ func Foo(w http.ResponseWriter, r *http.Request) {
 }
 
 func FooBar(f kairos.Future) {
+	go kairos.RunFuture(f)
 }

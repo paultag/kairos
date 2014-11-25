@@ -1,12 +1,12 @@
 package main
 
 import (
-	"./kairos"
+	"./future"
 	"log"
 )
 
 func main() {
-	f := kairos.GetFuture("0bbdae47-849c-423d-894e-7916a5fc040c")
-	kairos.RunFuture(f)
+	f := future.GetFuture("0bbdae47-849c-423d-894e-7916a5fc040c")
+	f.Run()
 	log.Println("Listening...")
 }

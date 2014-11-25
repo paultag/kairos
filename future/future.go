@@ -1,4 +1,4 @@
-package kairos
+package future
 
 import (
 	"log"
@@ -31,12 +31,12 @@ func GetFuture(id string) Future {
 }
 
 /* Save a Future */
-func SaveFuture(f Future) {
+func (f Future) Save() {
 	/* Fill this out with doing a sqlite call... */
 }
 
 /* Run a Future */
-func RunFuture(f Future) {
+func (f Future) Run() {
 	delta := f.Scheduled.Sub(time.Now())
 	if delta < 0 {
 		delta = 0
@@ -48,7 +48,7 @@ func RunFuture(f Future) {
 	err := f.Command.Run()
 	f.Done = true
 	f.Error = (err == nil)
-	SaveFuture(f)
+	f.Save()
 
 	if err != nil {
 		log.Fatal(err)

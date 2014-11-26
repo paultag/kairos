@@ -10,7 +10,7 @@ import (
 func main() {
 	rtr := mux.NewRouter()
 
-	rtr.HandleFunc("/{collection}/", web.Collection).Methods("GET")
+	rtr.HandleFunc("/{collection}/", web.Collection).Methods("GET", "POST")
 	rtr.HandleFunc("/{collection}/{future}/", web.Future).Methods("GET")
 
 	http.Handle("/", rtr)

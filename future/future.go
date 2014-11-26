@@ -18,7 +18,7 @@ type Future struct {
 }
 
 /* Get a Future by ID */
-func GetFuture(id string) Future {
+func Get(id string) Future {
 	/* Fill this out with doing a sqlite call... */
 	return Future{
 		Id:        id,

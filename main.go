@@ -10,8 +10,8 @@ import (
 func main() {
 	rtr := mux.NewRouter()
 
-	rtr.HandleFunc("/foo/", web.Foo).Methods("GET")
-	rtr.HandleFunc("/{path:.+}", web.Root).Methods("GET")
+	rtr.HandleFunc("/{collection}/", web.Collection).Methods("GET")
+	rtr.HandleFunc("/{collection}/{future}/", web.Future).Methods("GET")
 
 	http.Handle("/", rtr)
 

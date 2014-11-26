@@ -1,19 +1,21 @@
 package web
 
 import (
-	"../kairos"
+	"../future"
 	"fmt"
+	"github.com/gorilla/mux"
 	"net/http"
 )
 
-func Root(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "(root) Hitting: %s!", r.URL.Path[1:])
+func Collection(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	collection := vars["collection"]
+	fmt.Fprintf(w, collection)
 }
 
-func Foo(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "(foo ) Hitting: %s!", r.URL.Path[1:])
-}
-
-func FooBar(f kairos.Future) {
-	go kairos.RunFuture(f)
+func Future(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	futureId := vars["future"]
+	f := future.Get(futureId)
+	go f.Run()
 }

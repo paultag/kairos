@@ -19,11 +19,19 @@ func LoadFutureDB() *sql.DB {
 func Get(id string) (*Future, error) {
 	db := LoadFutureDB()
 	future := new(Future)
-	err := meddler.QueryRow(db, future, "SELECT * FROM future WHERE id = ?", id)
+	err := meddler.QueryRow(db, future, "SELECT * FROM futures WHERE id = ?", id)
 	if err != nil {
 		return nil, err
 	}
 	return future, err
+}
+
+/* Save a Future */
+func (f Future) Save() {
+	db := LoadFutureDB()
+	tx, _ := db.Begin()
+	meddler.Save(tx, "futures", &f)
+	tx.Commit()
 }
 
 /* */

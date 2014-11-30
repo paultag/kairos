@@ -43,11 +43,6 @@ func New(scheduled time.Time, command string) Future {
 	return f
 }
 
-/* Save a Future */
-func (f Future) Save() {
-	/* Fill this out with doing a sqlite call... */
-}
-
 /* Schedule a Future */
 func (f Future) Schedule() {
 	delta := f.Scheduled.Sub(time.Now())

@@ -18,6 +18,18 @@ type Future struct {
 	Command   string
 }
 
+/* Schema for Future DB */
+const FUTURE_SCHEMA = `CREATE TABLE IF NOT EXISTS futures (
+		Id              VARCHAR(255) PRIMARY KEY,
+		Scheduled       DATETIME NOT NULL,
+		Started         BOOLEAN NOT NULL,
+		Cancelled       BOOLEAN NOT NULL,
+		Done            BOOLEAN NOT NULL,
+		Error           BOOLEAN NOT NULL,
+		Command         TEXT NOT NULL
+
+)`
+
 /* Create a new Future */
 func New(scheduled time.Time, command string) Future {
 	f := Future{
@@ -29,14 +41,6 @@ func New(scheduled time.Time, command string) Future {
 		Command:   command,
 	}
 	return f
-}
-
-/* Get a Future by ID */
-func Get(id string) Future {
-	/* Fill this out with doing a sqlite call... */
-	return Future{
-		Id: id,
-	}
 }
 
 /* Save a Future */

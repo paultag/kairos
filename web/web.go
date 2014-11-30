@@ -58,7 +58,12 @@ func Future(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 	case "GET":
-		f := future.Get(futureId)
+		f, err := future.Get(futureId)
+
+		if err != nil {
+			return
+		}
+
 		d, err := json.Marshal(f)
 		if err != nil {
 			return
